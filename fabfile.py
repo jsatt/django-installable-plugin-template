@@ -30,6 +30,11 @@ def test(test_case=''):
     _local('django-admin.py test %s' % test_case)
 
 
+def test_coverage():
+    _local('coverage run --source=%s --omit=*/migrations/*.py '
+           '$(which django-admin.py) test' % APP_NAME)
+
+
 def serve():
     """Start the Django dev server."""
     _local('django-admin.py runserver')
